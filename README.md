@@ -417,18 +417,6 @@ remain local unless explicitly shared.
 
 ---
 
-## Optional API Authentication
-
-Set:
-
-```bash
-ANDROMEDA_API_KEY=your_key
-```
-
-to enable Bearer token authentication.
-
----
-
 # Future Roadmap
 
 * Multi-agent orchestration
