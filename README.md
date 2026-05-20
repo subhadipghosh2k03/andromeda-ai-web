@@ -1,4 +1,4 @@
-# 🌌 Andromeda AI
+# Andromeda AI
 
 > Enterprise-grade local AI workspace powered by FastAPI, Node.js, llama.cpp, GGUF models, and local inference pipelines. 
 
