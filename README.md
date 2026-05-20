@@ -199,7 +199,7 @@ Andromeda/
 
 ---
 
-# 🛠 Core Components
+# Core Components
 
 ## FastAPI Gateway
 
@@ -262,7 +262,7 @@ The frontend is a lightweight Vanilla JavaScript SPA.
 
 ---
 
-# 📏 Token Budgeting
+# Token Budgeting
 
 Andromeda uses a custom context compression algorithm to avoid context overflow.
 
