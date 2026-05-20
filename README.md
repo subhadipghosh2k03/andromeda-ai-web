@@ -1,46 +1,26 @@
-#  Andromeda AI
+# 🌌 Andromeda AI
 
-> Enterprise-grade local AI workspace powered by FastAPI, Node.js, llama.cpp, GGUF models, and fully local inference pipelines.
+> Enterprise-grade local AI workspace powered by FastAPI, Node.js, llama.cpp, GGUF models, and local inference pipelines. 
 
-Andromeda AI is a secure, local-first AI platform designed to deliver production-grade LLM experiences entirely on your own hardware.
+Andromeda AI is a secure, local-first AI platform designed to deliver production-grade LLM workflows entirely on local infrastructure.
 
-It combines:
+The platform combines:
 
-*  FastAPI middleware
-*  llama.cpp inference
-*  Node.js orchestration
-*  Local RAG pipelines
-*  Offline-first privacy
-*  Dynamic AI Skills
-*  Secure remote tunneling
-*  Streaming chat interfaces
+* FastAPI middleware orchestration
+* Node.js runtime management
+* llama.cpp inference execution
+* GGUF model deployment
+* Local document processing pipelines
+* Client-side RAG workflows
+* Dynamic AI Skill injection
+* Streaming inference interfaces
+* Secure remote access tunneling
 
-Unlike cloud AI services, Andromeda keeps all prompts, files, embeddings, chats, and reasoning traces local.
-
-No telemetry.
-No forced APIs.
-No “your data may be used for training” nonsense. 💀
+All prompts, documents, embeddings, inference traces, and conversations remain under local control.
 
 ---
 
-# Features
-
-*  Local GGUF model execution via llama.cpp
-*  OpenAI-compatible `/v1/chat/completions`
-*  PDF & document extraction
-*  Client-side RAG workflows
-*  Dynamic AI Skills system
-*  Streaming token responses
-*  Thinking/reasoning accordion blocks
-*  Persistent local chat history
-*  Modern responsive UI
-*  API key protection
-*  Secure WAN access with zrok
-*  Fully offline capable
-
----
-
-#  Architecture Overview
+# Architecture Overview
 
 ```mermaid
 flowchart TB
@@ -66,6 +46,7 @@ flowchart TB
             LLAMA["llama.cpp Server"]
             MODELS[("GGUF Models")]
         end
+
     end
 
     subgraph WAN["Remote Access"]
@@ -93,9 +74,9 @@ flowchart TB
 
 ---
 
-#  Request Lifecycle
+# Request Lifecycle
 
-## Interactive Chat + Local RAG Flow
+## Interactive Chat and Local RAG Flow
 
 ```mermaid
 sequenceDiagram
@@ -134,7 +115,7 @@ sequenceDiagram
 
 ---
 
-#  AI Skills Execution Flow
+# AI Skills Execution Flow
 
 ```mermaid
 sequenceDiagram
@@ -172,7 +153,7 @@ sequenceDiagram
 
 ---
 
-#  Project Structure
+# System Directory Structure
 
 ```bash
 Andromeda/
@@ -203,18 +184,21 @@ Andromeda/
 
 ## FastAPI Gateway
 
-`backend.py` acts as the middleware between the frontend and local inference runtime.
+`backend.py` acts as the orchestration and middleware layer between the frontend interface and the local inference runtime.
 
 ### Responsibilities
 
-* OpenAI-compatible API proxy
+* OpenAI-compatible API proxying
 * Streaming response forwarding
 * Authentication enforcement
-* Document extraction
+* Document ingestion
 * AI Skill orchestration
-* Local model management
+* Runtime status management
+* Model registry coordination
 
-### Supported Formats
+### Document Processing Pipeline
+
+Supported formats include:
 
 * PDF
 * Markdown
@@ -225,48 +209,48 @@ Andromeda/
 * JavaScript
 * HTML
 
-### Extraction Stack
+Extraction stack:
 
-* PyMuPDF
-* pdfplumber fallback
-* Safe encoding fallbacks
+1. PyMuPDF
+2. pdfplumber fallback
+3. Encoding-safe text decoding
 
 ---
 
-## Node.js Runtime
+## Node.js Runtime Layer
 
-`server.js` manages communication with llama.cpp.
+`server.js` manages inference orchestration and communication with llama.cpp.
 
 ### Responsibilities
 
-* Launch llama.cpp server
-* Stream inference requests
-* Normalize OpenAI-compatible payloads
-* Runtime monitoring
-* Model lifecycle management
+* Launching llama.cpp inference services
+* Streaming token forwarding
+* OpenAI-compatible payload normalization
+* Runtime lifecycle monitoring
+* Model process management
 
 ---
 
 ## Frontend Runtime
 
-The frontend is a lightweight Vanilla JavaScript SPA.
+The frontend is implemented as a lightweight Vanilla JavaScript SPA.
 
 ### Features
 
 * Streaming markdown rendering
-* Syntax highlighting
-* Thinking block parser
-* Persistent local storage
-* Dynamic theme system
-* Token budget compression
+* Syntax-highlighted code blocks
+* Dynamic reasoning panels
+* Persistent local state storage
+* Token budget management
+* Theme and UI state preservation
 
 ---
 
-# Token Budgeting
+# Token Budgeting and Context Compression
 
-Andromeda uses a custom context compression algorithm to avoid context overflow.
+Andromeda implements a custom context compression pipeline to prevent context overflow during long-running sessions.
 
-Target limit:
+Target context limit:
 
 ```txt
 24,000 tokens ≈ 84,000 characters
@@ -288,80 +272,33 @@ flowchart TD
     A --> B --> C --> D --> E
 ```
 
-This preserves:
+The compression engine preserves:
 
-* original objectives
-* recent context
-* system instructions
+* System instructions
+* Initial task objectives
+* Most recent conversational state
 
-while trimming older middle history first.
-
----
-
-# API Endpoints
-
-| Endpoint             | Method | Description               |
-| -------------------- | ------ | ------------------------- |
-| `/api/models`        | GET    | List available models     |
-| `/api/models/load`   | POST   | Load a model              |
-| `/api/status`        | GET    | Runtime status            |
-| `/api/extract-text`  | POST   | Extract text from files   |
-| `/api/skills`        | GET    | List installed skills     |
-| `/api/skills/{name}` | GET    | Return skill instructions |
-| `/v1/{path:path}`    | ALL    | OpenAI-compatible proxy   |
+Older intermediary history is truncated first.
 
 ---
 
-#  Installation
+# API Reference
 
-## Requirements
-
-* Python 3.11+
-* Node.js 20+
-* llama.cpp
-* GGUF model
-* 8GB+ RAM recommended
-
----
-
-## 1. Clone Repository
-
-```bash
-git clone https://github.com/yourname/andromeda-ai.git
-cd andromeda-ai
-```
+| Endpoint             | Method | Description                       |
+| -------------------- | ------ | --------------------------------- |
+| `/api/models`        | GET    | Returns available models          |
+| `/api/models/load`   | POST   | Loads a selected model            |
+| `/api/status`        | GET    | Returns runtime status            |
+| `/api/extract-text`  | POST   | Extracts text from uploaded files |
+| `/api/skills`        | GET    | Lists installed AI Skills         |
+| `/api/skills/{name}` | GET    | Returns skill instruction content |
+| `/v1/{path:path}`    | ALL    | OpenAI-compatible inference proxy |
 
 ---
 
-## 2. Install Python Dependencies
+# Runtime Modes
 
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## 3. Install Node.js Dependencies
-
-```bash
-npm install
-```
-
----
-
-## 4. Setup llama.cpp
-
-Build or download llama.cpp and start the server:
-
-```bash
-llama-server -m models/your-model.gguf --port 1234
-```
-
----
-
-# Running Andromeda
-
-## Local Mode
+## Local Workspace Mode
 
 ```bash
 start_local.bat
@@ -370,11 +307,11 @@ start_local.bat
 Launches:
 
 * FastAPI gateway
-* Node.js runtime
-* llama.cpp connection
-* Browser UI
+* Node.js orchestration runtime
+* llama.cpp inference backend
+* Browser-based SPA interface
 
-Accessible at:
+Default endpoint:
 
 ```txt
 http://localhost:8080
@@ -382,50 +319,75 @@ http://localhost:8080
 
 ---
 
-## Remote Access Mode
+## Secure Remote Access Mode
 
 ```bash
 start_remote.bat
 ```
 
-Creates a secure zrok tunnel for remote access.
+Creates a secure zrok tunnel for remote WAN access without exposing local ports directly.
 
-Example:
+Example endpoint:
 
 ```txt
 https://your-instance.share.zrok.io
 ```
 
-No port forwarding required.
-
 ---
 
 # Security Model
 
-Andromeda follows a strict local-first philosophy.
+Andromeda follows a strict local-first execution model.
 
-## Data Never Leaves Your Machine
+## Local Data Residency
+
+The following remain local unless explicitly shared:
 
 * prompts
-* files
+* uploaded documents
 * embeddings
-* chats
-* inference
+* inference outputs
 * reasoning traces
-
-remain local unless explicitly shared.
+* conversation history
 
 ---
 
-# Future Roadmap
+## Authentication Layer
+
+Optional Bearer token authentication is supported through:
+
+```bash
+ANDROMEDA_API_KEY=your_key
+```
+
+When enabled, all frontend and API requests require authorization validation.
+
+---
+
+# Architectural Goals
+
+The platform is designed around the following principles:
+
+* Local-first execution
+* Open inference standards
+* Offline-capable workflows
+* Modular orchestration
+* Streaming-first UX
+* Extensible AI Skills system
+* OpenAI-compatible interoperability
+* Minimal frontend overhead
+
+---
+
+# Future Expansion Areas
 
 * Multi-agent orchestration
-* Local vector database support
-* Voice interaction pipeline
-* GPU scheduling system
-* Workspace plugins
-* Distributed inference clusters
-* Live collaborative sessions
+* Distributed inference routing
+* Local vector database integration
+* GPU-aware scheduling
+* Voice interaction pipelines
+* Plugin-based workspace extensions
+* Collaborative local workspaces
 
 ---
 
@@ -435,16 +397,16 @@ MIT License
 
 ---
 
-# Final Notes
+# Closing Notes
 
 Andromeda AI combines:
 
 * FastAPI
-* Node.js
+* Node.js orchestration
 * llama.cpp
-* GGUF local inference
-* AI Skill injection
-* client-side RAG
-* streaming reasoning interfaces
+* GGUF inference runtimes
+* Local RAG pipelines
+* Dynamic AI Skill injection
+* Streaming reasoning interfaces
 
-to create a modern AI workspace that remains fully sovereign.
+to provide a fully sovereign AI workspace architecture optimized for local inference environments.
