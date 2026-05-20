@@ -298,7 +298,7 @@ while trimming older middle history first.
 
 ---
 
-# 📡 API Endpoints
+# API Endpoints
 
 | Endpoint             | Method | Description               |
 | -------------------- | ------ | ------------------------- |
@@ -359,7 +359,7 @@ llama-server -m models/your-model.gguf --port 1234
 
 ---
 
-# 🖥 Running Andromeda
+# Running Andromeda
 
 ## Local Mode
 
