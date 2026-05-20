@@ -352,18 +352,6 @@ The following remain local unless explicitly shared:
 
 ---
 
-## Authentication Layer
-
-Optional Bearer token authentication is supported through:
-
-```bash
-ANDROMEDA_API_KEY=your_key
-```
-
-When enabled, all frontend and API requests require authorization validation.
-
----
-
 # Architectural Goals
 
 The platform is designed around the following principles:
